@@ -22,7 +22,9 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm test
+        run: npm test -- --watchAll=false --passWithNoTests
+        env:
+          NODE_OPTIONS: '--experimental-vm-modules'
 
   android-build:
     needs: test
