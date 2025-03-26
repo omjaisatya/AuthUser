@@ -85,8 +85,10 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        manifestPlaceholders["GOOGLE_WEB_CLIENT_ID"] = GOOGLE_WEB_CLIENT_ID
-        manifestPlaceholders = [APP_NAME: project.env.get("APP_NAME") ?: "AuthUser"]
+        manifestPlaceholders = [
+            APP_NAME: project.env.get("APP_NAME") ?: "AuthUser",
+            GOOGLE_WEB_CLIENT_ID: project.env.get("GOOGLE_WEB_CLIENT_ID") ?: "default_client_id"
+        ]
         buildConfigField "String", "GOOGLE_WEB_CLIENT_ID", project.env.get("GOOGLE_WEB_CLIENT_ID")
     }
     signingConfigs {
@@ -107,7 +109,14 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            shrinkResources true
+            crunchPngs true
         }
+    }
+    packagingOptions {
+        exclude "**/libjsc.so"
+        exclude "**/libc++_shared.so"
+        pickFirst "**/libhermes.so"
     }
 }
 
