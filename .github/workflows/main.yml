@@ -12,6 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create Environment File
+        run: |
+          echo "Creating .env file"
+          cat <<EOF > android/.env
+          GOOGLE_WEB_CLIENT_ID=${{ secrets.GOOGLE_WEB_CLIENT_ID }}
+          EOF
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
