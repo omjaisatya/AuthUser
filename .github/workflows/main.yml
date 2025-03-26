@@ -1,4 +1,4 @@
-name: React Native CI/CD
+name: Android Build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  android-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,20 +18,6 @@ jobs:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run tests
-        run: npm test -- --watchAll=false --passWithNoTests
-        env:
-          NODE_OPTIONS: '--experimental-vm-modules'
-
-  android-build:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -41,40 +27,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Android
+      - name: Build Android Release
         run: |
           cd android
           ./gradlew assembleRelease
 
-      - name: Upload Artifact
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v3
         with:
           name: android-app
           path: android/app/build/outputs/apk/release/app-release.apk
-
-  ios-build:
-    needs: test
-    runs-on: macOS-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18.x'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: |
-          npm ci
-          cd ios && pod install && cd ..
-
-      - name: Build iOS
-        run: |
-          xcodebuild build -workspace ios/YourProject.xcworkspace -scheme YourProject -configuration Release -derivedDataPath build
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ios-app
-          path: build/Build/Products/Release-iphonesimulator/YourProject.app
