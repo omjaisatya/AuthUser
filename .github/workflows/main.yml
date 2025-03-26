@@ -18,7 +18,7 @@ jobs:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: Set up JDK
+      - name: Set up JDK 17 (Required for Gradle 8.x)
         uses: actions/setup-java@v4
         with:
           java-version: '17'
@@ -27,16 +27,39 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate JS Bundle
+        run: |
+          npx react-native bundle \
+            --platform android \
+            --dev false \
+            --entry-file index.js \
+            --bundle-output android/app/src/main/assets/index.android.bundle \
+            --assets-dest android/app/src/main/res/
+
       - name: Fix Gradle permissions
         run: chmod +x android/gradlew
+
+      - name: Clean Gradle
+        run: cd android && ./gradlew clean
 
       - name: Build Android Release
         run: |
           cd android
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease \
+            --warning-mode all \
+            -Dorg.gradle.java.home=$JAVA_HOME_17_X64
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-app
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: |
+            android/app/build/outputs/apk/release/*.apk
+            android/app/build/outputs/bundle/release/*.aab
+
+      - name: Upload Build Reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports
+          path: android/build/reports/
