@@ -1,6 +1,6 @@
 # React Native Google Authentication
 
-[![React Native](https://img.shields.io/badge/React%20Native-0.72-blue)](https://reactnative.dev/)
+[![React Native](https://img.shields.io/badge/React%20Native-0.78.1-blue)](https://reactnative.dev/)
 
 ⚠️ **Important Note**: This implementation currently supports **Google Sign-In only**. Apple Sign-In is not available in this version.
 
