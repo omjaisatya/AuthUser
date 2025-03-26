@@ -34,6 +34,12 @@ local.properties
 *.keystore
 !debug.keystore
 .kotlin/
+android/gradle.properties
+android/app/build.gradle
+android/.gradle/
+android/app/keystore/
+android/app/debug.keystore
+android/gradle.properties 
 
 # node.js
 #

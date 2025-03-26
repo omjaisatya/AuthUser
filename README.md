@@ -1,97 +1,92 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Google Authentication
 
-# Getting Started
+[![React Native](https://img.shields.io/badge/React%20Native-0.72-blue)](https://reactnative.dev/)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+⚠️ **Important Note**: This implementation currently supports **Google Sign-In only**. Apple Sign-In is not available in this version.
 
-## Step 1: Start Metro
+A React Native authentication implementation using Google Sign-In
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Limitations
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+🚧 **Current Restrictions**:
 
-```sh
-# Using npm
-npm start
+- No Apple Sign-In support
+- iOS implementation provided but **not tested by maintainer**
+- Focused on Android development environment
+- No physical iOS device available for testing
 
-# OR using Yarn
-yarn start
+## Features
+
+- Google Sign-In integration
+- Cross-platform support (iOS & Android)
+- Profile display with user information
+
+## Prerequisites
+
+- Node.js (v16+)
+- React Native CLI
+- Xcode (for iOS development)
+- Android Studio (for Android development)
+- Java Development Kit (JDK 11+)
+- Google Developer account
+
+## Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/omjaisatya/AuthUser.git
+cd AuthUser
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+npm install
 ```
 
-### iOS
+## Configuration
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### iOS Specific Notes
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+1. The provided iOS configuration is based on standard documentation
+2. Not verified on physical Apple devices
+3. Apple Sign-In capabilities are **not configured** in this project
+4. Use Xcode cloud services or community contributions for iOS testing
 
-```sh
-bundle install
+## Running the App
+
+## Android
+
+```bash
+npx react-native run-android
 ```
 
-Then, and every time you update your native dependencies, run:
+## iOS
 
-```sh
-bundle exec pod install
+```bash
+cd ios && pod install && cd ..
+npx react-native run-ios
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Troubleshooting
 
-```sh
-# Using npm
-npm run ios
+### Known Limitations
 
-# OR using Yarn
-yarn ios
-```
+**Explicitly Unsupported**:
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+- Apple ID/Apple Sign-In functionality
+- iOS-specific authentication issues
+- Physical device iOS testing
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Common Issues
 
-## Step 3: Modify your app
+- **Apple-related Errors**: Not supported in current implementation
+- **iOS Simulator Issues**: Untested by maintainer
+- **Missing Apple Services**: Intentional exclusion from current scope
 
-Now that you have successfully run the app, let's make changes!
+## Contributing
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+**Special Contribution Request**:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Apple Sign-In implementation contributions welcome
+- iOS testing improvements encouraged
+- Physical device test reports appreciated
