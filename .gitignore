@@ -34,6 +34,9 @@ local.properties
 
 # Corrected Android rules
 android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
 android/app/keystore/
 android/app/debug.keystore
 
