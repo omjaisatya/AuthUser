@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  SafeAreaView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -39,12 +40,12 @@ const WelcomeScreen: React.FC<Props> = ({navigation}) => {
   };
 
   return (
-    <View>
+    <SafeAreaView style={styles.safeContainer}>
       <View style={styles.container}>
         <View style={styles.progressContainer}>
           <View style={styles.progressBar} />
         </View>
-        <View>
+        <View style={styles.textContainer}>
           <GradientText style={styles.title} boldText="Mindful Journey">
             Begin Your {'\n'}
           </GradientText>
@@ -93,13 +94,16 @@ const WelcomeScreen: React.FC<Props> = ({navigation}) => {
           <Text style={styles.linkText}>Terms of Service</Text>
         </Text>
       </LinearGradient>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+  },
   container: {
-    // backgroundColor: '#fff',
+    flex: 1,
   },
   progressContainer: {
     width: '90%',
@@ -115,12 +119,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9A5A',
     borderRadius: 2,
   },
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    paddingHorizontal: '5%',
+  },
   title: {
     fontSize: scaleFontSize(44),
     textAlign: 'center',
-    marginTop: height * 0.05,
     color: '#333',
-    justifyContent: 'center',
   },
   subtitle: {
     textAlign: 'center',
@@ -128,13 +135,10 @@ const styles = StyleSheet.create({
     fontSize: scaleFontSize(14),
     marginTop: height * 0.015,
     paddingHorizontal: '5%',
-    marginVertical: height * 0.1,
   },
   containerSocial: {
-    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: '#fff',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingVertical: height * 0.04,
