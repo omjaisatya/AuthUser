@@ -10,7 +10,9 @@ import {
   UserData,
 } from './storageService';
 
-console.log('GOOGLE_WEB_CLIENT_ID:', Config.GOOGLE_WEB_CLIENT_ID);
+if (!Config.FIREBASE_WEB_CLIENT) {
+  throw new Error('Missing GOOGLE_WEB_CLIENT_ID in environment configuration');
+}
 
 GoogleSignin.configure({
   webClientId: Config.GOOGLE_WEB_CLIENT_ID,
