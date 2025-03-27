@@ -87,9 +87,10 @@ android {
         versionName "1.0"
         manifestPlaceholders = [
             APP_NAME: project.env.get("APP_NAME") ?: "AuthUser",
-            GOOGLE_WEB_CLIENT_ID: project.env.get("GOOGLE_WEB_CLIENT_ID") ?: "default_client_id"
+            GOOGLE_WEB_CLIENT_ID: project.env.get("GOOGLE_WEB_CLIENT_ID")
         ]
-        buildConfigField "String", "GOOGLE_WEB_CLIENT_ID", project.env.get("GOOGLE_WEB_CLIENT_ID")
+        // buildConfigField "String", "GOOGLE_WEB_CLIENT_ID", project.env.get("GOOGLE_WEB_CLIENT_ID")
+        buildConfigField "String", "GOOGLE_WEB_CLIENT_ID", "\"${project.env.get("GOOGLE_WEB_CLIENT_ID")}\""
     }
     signingConfigs {
         debug {
