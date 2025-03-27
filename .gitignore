@@ -39,6 +39,7 @@ android/build/
 android/local.properties
 android/app/keystore/
 android/app/debug.keystore
+android/app/google-services.json
 
 # node.js
 node_modules/
