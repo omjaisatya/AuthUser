@@ -95,10 +95,9 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image source={{uri: userData?.photo}} style={styles.profileImage} />
-      <Text style={styles.title}>{userData?.name || 'Mynd User'}</Text>
+      <Text style={styles.title}>{userData?.name || 'Undefine User'}</Text>
       <Text style={styles.email}>{userData?.email || ''}</Text>
 
-      <Text style={styles.title}>Welcome, {userData?.name || 'User'}!</Text>
       <Text style={styles.text}>Age: {userData?.age || 'N/A'}</Text>
       <Text style={styles.text}>Gender: {userData?.gender || 'N/A'}</Text>
 
