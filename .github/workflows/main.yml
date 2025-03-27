@@ -15,7 +15,7 @@ jobs:
       - name: Create Environment File
         run: |
           echo "Creating .env file"
-          cat <<EOF > android/.env
+          cat <<EOF > .env
           APP_NAME=${{ secrets.APP_NAME }}
           GOOGLE_WEB_CLIENT_ID=${{ secrets.GOOGLE_WEB_CLIENT_ID }}
           EOF
