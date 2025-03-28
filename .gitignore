@@ -39,6 +39,8 @@ android/build/
 android/local.properties
 android/app/keystore/
 android/app/debug.keystore
+android/keystore.properties
+android/app/release.keystore
 
 # node.js
 node_modules/
